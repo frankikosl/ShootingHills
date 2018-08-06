@@ -150,30 +150,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="aliensExample.py" />
-    <Compile Include="classes\Background.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="classes\Enemy.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="classes\EnemyBullet.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="classes\MunitionBox.py" />
-    <Compile Include="classes\Player.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="classes\PlayerBullet.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="classes\__init__.py">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="ShootingHills.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="media" />
-    <Folder Include="classes\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
 </Project>

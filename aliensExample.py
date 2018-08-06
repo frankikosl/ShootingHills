@@ -176,7 +176,7 @@ class Score(pygame.sprite.Sprite):
 
 
 
-def main():
+def main(winstyle = 0):
     # Initialize pygame
     pygame.init()
     if pygame.mixer and not pygame.mixer.get_init():
@@ -184,7 +184,9 @@ def main():
         pygame.mixer = None
 
     # Set the display mode
-    screen = pygame.display.set_mode(SCREENRECT.size, pygame.FULLSCREEN)
+    winstyle = 0  # |FULLSCREEN
+    bestdepth = pygame.display.mode_ok(SCREENRECT.size, winstyle, 32)
+    screen = pygame.display.set_mode(SCREENRECT.size, winstyle, bestdepth)
 
     #Load images, assign to sprite classes
     #(do this before the classes are used, after screen setup)
