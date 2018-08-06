@@ -153,14 +153,17 @@
     <Compile Include="classes\Background.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="classes\Bullet.py">
+    <Compile Include="classes\Enemy.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="classes\Enemy.py">
+    <Compile Include="classes\EnemyBullet.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="classes\MunitionBox.py" />
     <Compile Include="classes\Player.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\PlayerBullet.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ShootingHills.py" />
