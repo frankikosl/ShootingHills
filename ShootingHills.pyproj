@@ -3,15 +3,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{f97c249d-34d9-4192-a8ec-62e3caf3fbf4}</ProjectGuid>
+    <ProjectGuid>{a6504170-4e8d-4e7a-93b3-39c3cfb6c098}</ProjectGuid>
     <ProjectHome />
-    <StartupFile>aliensExample.py</StartupFile>
+    <StartupFile>ShootingHills.py</StartupFile>
     <SearchPath />
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <ProjectTypeGuids>{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
     <InterpreterId />
+    <Name>ShootingHills</Name>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
   <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
@@ -149,9 +150,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="aliensExample.py" />
+    <Compile Include="classes\Background.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\Bullet.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\Enemy.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\MunitionBox.py" />
+    <Compile Include="classes\Player.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="ShootingHills.py" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="classes" />
     <Folder Include="media" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
