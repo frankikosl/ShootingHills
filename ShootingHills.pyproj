@@ -166,11 +166,14 @@
     <Compile Include="classes\PlayerBullet.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="classes\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="ShootingHills.py" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="classes" />
     <Folder Include="media" />
+    <Folder Include="classes\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
 </Project>
