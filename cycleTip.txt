@@ -1,0 +1,2 @@
+you could have a function that say runs every 60th of a second, and all of the functions the game needs to do in one cycle are triggered by it
+so no matter what the game will never update more than 60 times a second

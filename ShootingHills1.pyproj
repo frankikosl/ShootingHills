@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{a6504170-4e8d-4e7a-93b3-39c3cfb6c098}</ProjectGuid>
+    <ProjectHome />
+    <StartupFile>ShootingHills.py</StartupFile>
+    <SearchPath />
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <ProjectTypeGuids>{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
+    <LaunchProvider>Standard Python launcher</LaunchProvider>
+    <InterpreterId />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
+  <PropertyGroup>
+    <VisualStudioVersion Condition=" '$(VisualStudioVersion)' == '' ">10.0</VisualStudioVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="cycleTip.txt" />
+    <Content Include="media\0.png" />
+    <Content Include="media\1.png" />
+    <Content Include="media\2.png" />
+    <Content Include="media\3.png" />
+    <Content Include="media\4.png" />
+    <Content Include="media\5.png" />
+    <Content Include="media\6.png" />
+    <Content Include="media\7.png" />
+    <Content Include="media\8.png" />
+    <Content Include="media\9.png" />
+    <Content Include="media\abertura.png" />
+    <Content Include="media\balas.png" />
+    <Content Include="media\board1.png" />
+    <Content Include="media\brit.png" />
+    <Content Include="media\britAgachado.png" />
+    <Content Include="media\britMorto.png" />
+    <Content Include="media\britPulando.png" />
+    <Content Include="media\britTiro.png" />
+    <Content Include="media\britWin.png" />
+    <Content Include="media\carga1.png" />
+    <Content Include="media\carga2.png" />
+    <Content Include="media\carga3.png" />
+    <Content Include="media\carga4.png" />
+    <Content Include="media\cargaDead.png" />
+    <Content Include="media\cargaMed1.png" />
+    <Content Include="media\cargaMed2.png" />
+    <Content Include="media\cargaMed3.png" />
+    <Content Include="media\cargaMed4.png" />
+    <Content Include="media\cargaMedDead.png" />
+    <Content Include="media\chumbo.png" />
+    <Content Include="media\Cpilha1.png" />
+    <Content Include="media\Cpilha2.png" />
+    <Content Include="media\Cpilha3.png" />
+    <Content Include="media\Cpilha4.png" />
+    <Content Include="media\dead.png" />
+    <Content Include="media\dificuldade.png" />
+    <Content Include="media\eneme.png" />
+    <Content Include="media\enemebaixo.png" />
+    <Content Include="media\enemecima.png" />
+    <Content Include="media\enemeMed.png" />
+    <Content Include="media\enemeMedBaixo.png" />
+    <Content Include="media\enemeMedCima.png" />
+    <Content Include="media\flacha1.png" />
+    <Content Include="media\flacha2.png" />
+    <Content Include="media\flacha3.png" />
+    <Content Include="media\flacha4.png" />
+    <Content Include="media\flacha5.png" />
+    <Content Include="media\flacha6.png" />
+    <Content Include="media\flecha.png" />
+    <Content Include="media\flechaEnemy.png" />
+    <Content Include="media\Fundo1.png" />
+    <Content Include="media\Fundo10.png" />
+    <Content Include="media\Fundo11.png" />
+    <Content Include="media\Fundo12.png" />
+    <Content Include="media\Fundo13.png" />
+    <Content Include="media\Fundo14.png" />
+    <Content Include="media\Fundo15.png" />
+    <Content Include="media\Fundo16.png" />
+    <Content Include="media\Fundo17.png" />
+    <Content Include="media\Fundo18.png" />
+    <Content Include="media\Fundo19.png" />
+    <Content Include="media\Fundo2.png" />
+    <Content Include="media\Fundo20.png" />
+    <Content Include="media\Fundo21.png" />
+    <Content Include="media\Fundo22.png" />
+    <Content Include="media\Fundo23.png" />
+    <Content Include="media\Fundo24.png" />
+    <Content Include="media\Fundo25.png" />
+    <Content Include="media\Fundo26.png" />
+    <Content Include="media\Fundo27.png" />
+    <Content Include="media\Fundo28.png" />
+    <Content Include="media\Fundo29.png" />
+    <Content Include="media\Fundo3.png" />
+    <Content Include="media\Fundo30.png" />
+    <Content Include="media\Fundo31.png" />
+    <Content Include="media\Fundo32.png" />
+    <Content Include="media\Fundo4.png" />
+    <Content Include="media\Fundo5.png" />
+    <Content Include="media\Fundo6.png" />
+    <Content Include="media\Fundo7.png" />
+    <Content Include="media\Fundo8.png" />
+    <Content Include="media\Fundo9.png" />
+    <Content Include="media\FundoMed.png" />
+    <Content Include="media\heart1.png" />
+    <Content Include="media\heart2.png" />
+    <Content Include="media\heart3.png" />
+    <Content Include="media\heart4.png" />
+    <Content Include="media\med.png" />
+    <Content Include="media\med1.png" />
+    <Content Include="media\med2.png" />
+    <Content Include="media\medAgachado.png" />
+    <Content Include="media\medMorto.png" />
+    <Content Include="media\medPulando.png" />
+    <Content Include="media\medWin.png" />
+    <Content Include="media\pausado.png" />
+    <Content Include="media\pcvel.png" />
+    <Content Include="media\pilha1.png" />
+    <Content Include="media\pilha2.png" />
+    <Content Include="media\pilha3.png" />
+    <Content Include="media\pilha4.png" />
+    <Content Include="media\pilha5.png" />
+    <Content Include="media\pilha6.png" />
+    <Content Include="media\Rpilha1.png" />
+    <Content Include="media\Rpilha2.png" />
+    <Content Include="media\Rpilha3.png" />
+    <Content Include="media\Rpilha4.png" />
+    <Content Include="media\rs.png" />
+    <Content Include="media\rsAgachado.png" />
+    <Content Include="media\rsMorto.png" />
+    <Content Include="media\rsPulando.png" />
+    <Content Include="media\rsWin.png" />
+    <Content Include="media\rus.png" />
+    <Content Include="media\rusAgachado.png" />
+    <Content Include="media\rusMorto.png" />
+    <Content Include="media\rusPulando.png" />
+    <Content Include="media\rusTiro.png" />
+    <Content Include="media\rusWin.png" />
+    <Content Include="media\small found.png" />
+    <Content Include="media\Sobre.png" />
+    <Content Include="media\usa.png" />
+    <Content Include="media\usaAgachado.png" />
+    <Content Include="media\usaMorto.png" />
+    <Content Include="media\usaPulando.png" />
+    <Content Include="media\usaTiro.png" />
+    <Content Include="media\usaWin.png" />
+    <Content Include="media\win.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="aliensExample.py" />
+    <Compile Include="classes\Background.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\Bullet.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\Enemy.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\MunitionBox.py" />
+    <Compile Include="classes\Player.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ShootingHills.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="classes" />
+    <Folder Include="media" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
+</Project>
