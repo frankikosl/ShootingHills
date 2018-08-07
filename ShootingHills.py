@@ -11,8 +11,9 @@ ctypes.windll.user32.SetProcessDPIAware()
 #game constants
 MAX_SHOTS      = 2      #most player bullets onscreen
 ENEMY_ODDS     = 10     #chances a new alien appears
-TRUERES = (ctypes.windll.user32.GetSystemMetrics(0), ctypes.windll.user32.GetSystemMetrics(1)) #screen resolution
-width, height = TRUERES
+TRUERES = (
+    ctypes.windll.user32.GetSystemMetrics(0), ctypes.windll.user32.GetSystemMetrics(1)) #screen resolution
+width, height = TRUERES #separate variables
 RESIZE =  width/1920 #scaling of images
 SCORE          = 0 #initial score
 
@@ -80,12 +81,16 @@ class PlayerBullet(pygame.sprite.Sprite):
 
 
 def main():
+
+    CURRENTMENU = 0 #0 is opening, 1 is about, 2 is difficulty and 3 is game
+
     # Initialize pygame
     pygame.mixer.init()
     if pygame.mixer and not pygame.mixer.get_init():
         print ('Warning, no sound')
         pygame.mixer = None
     font = pygame.font.Font(main_dir + '\media\\BUILDER.ttf', int(height / 10))
+    arrow = pygame.font.Font(main_dir + '\media\\8-BIT WONDER.ttf', int(height / 15))
     # Set the display mode
     screen = pygame.display.set_mode(TRUERES,pygame.FULLSCREEN)
 
@@ -130,20 +135,43 @@ def main():
     #set fonts
     startSurface = font.render('START', False, (0, 0, 0))
     aboutSurface = font.render('ABOUT', False, (0, 0, 0))
-    exitSurface = font.render('EXIT', False, (0, 0, 0))
+    exitSurface = font.render('LEAVE', False, (0, 0, 0))
+    arrowsSurface = arrow.render('[       ]', False, (0, 0, 0))
 
     running = True
+    arrowindex = 0
     while running:
         #create the background, tile the bgd image
-        screen.blit(menu.image, menu.rect)
-        screen.blit(startSurface,(width*3/5,height*8/12))
-        screen.blit(aboutSurface,(width*3/5,height*9/12))
-        screen.blit(exitSurface,(width*3/5,height*10/12))
-        pygame.display.flip()
+        if CURRENTMENU == 0:
+            screen.blit(menu.image, menu.rect)
+            screen.blit(arrowsSurface,(width*23/40,(height*65/96 + (height*8/96 * arrowindex))))
+            screen.blit(startSurface,(width*24/40,height*64/96))
+            screen.blit(aboutSurface,(width*24/40,height*72/96))
+            screen.blit(exitSurface,(width*24/40,height*80/96))
+            pygame.display.flip()
 
         #get input
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
+                if CURRENTMENU == 0:
+                   if event.key == pygame.K_DOWN or (
+                    event.key == pygame.K_UP):
+                        if event.key == pygame.K_UP and arrowindex != 0:
+                            arrowindex -= 1
+                        if event.key == pygame.K_DOWN and arrowindex != 2:
+                            arrowindex += 1
+                   if event.key == pygame.K_SPACE:
+                       if arrowindex == 0:
+                           CURRENTMENU = 2
+                           arrowindex = 0
+                           break
+                       elif arrowindex == 1:
+                           CURRENTMENU = 1
+                           arrowindex = 0
+                           break
+                       elif arrowindex == 2:
+                           running = False
+                           break
                 if event.key == pygame.K_ESCAPE:
                     running = False
                     break
@@ -165,6 +193,7 @@ def main():
 
     pygame.quit()
 #General functions for loading media files
+
 
 def load_image(file):
     "loads an image, prepares it for play"
