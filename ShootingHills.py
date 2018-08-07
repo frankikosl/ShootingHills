@@ -83,7 +83,8 @@ def main():
 
     #Load images, assign to sprite classes
     #(do this before the classes are used, after screen setup
-    menu = Background(load_images('Unbenannt.png', 'abertura.png') ,[0,0])
+    menu = Background(load_images(
+        'Unbenannt1.png', 'Unbenannt2.png', 'Unbenannt3.png') ,[0,0])
     #decorate the game window
     icon = load_image('icon.png')
     pygame.display.set_icon(icon)
@@ -109,6 +110,15 @@ def main():
                     main_dir+'\media\\', 'fundo.mp3')]
         pygame.mixer.music.load(music[0])
         pygame.mixer.music.play(-1)
+
+    # Initialize Game Groups
+    enemies = pygame.sprite.Group()
+    shots = pygame.sprite.Group()
+    ammobox = pygame.sprite.Group()
+    all = pygame.sprite.RenderUpdates()
+    lastalien = pygame.sprite.GroupSingle()
+    
+    clock = pygame.time.Clock()
     
     running = True
     while running:
@@ -116,14 +126,24 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
-                    pygame.quit()
                     running = False
                     break
             elif event.type == pygame.QUIT:
-                pygame.quit()
                 running = False
                 break
+        # clear/erase the last drawn sprites
+        all.clear(screen, menu)
 
+        #update all the sprites
+        all.update()
+            
+        #draw the scene
+        dirty = all.draw(screen)
+        pygame.display.update(dirty)
+
+        #cap the framerate
+        clock.tick(40)
+    pygame.quit()
 #General functions for loading media files
 
 def load_image(file):
@@ -132,7 +152,7 @@ def load_image(file):
     try:
         surface = pygame.image.load(file)
         surfacewidth, surfaceheight = surface.get_rect().size
-        surface = pygame.transform.scale(surface, int(surfacewidth * RESIZE), int(surfaceheight * RESIZE))
+        surface = pygame.transform.scale(surface, (int(surfacewidth * RESIZE), int(surfaceheight * RESIZE)))
     except pygame.error:
         raise SystemExit('Could not load image "%s" %s'%(file, pygame.get_error()))
     return surface.convert()
