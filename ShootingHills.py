@@ -12,7 +12,7 @@ ctypes.windll.user32.SetProcessDPIAware()
 MAX_SHOTS      = 2      #most player bullets onscreen
 ENEMY_ODDS     = 10     #chances a new alien appears
 TRUERES = (ctypes.windll.user32.GetSystemMetrics(0), ctypes.windll.user32.GetSystemMetrics(1)) #screen resolution
-width, heigth = TRUERES
+width, height = TRUERES
 RESIZE =  width/1920 #scaling of images
 SCORE          = 0 #initial score
 
@@ -25,10 +25,18 @@ class Background(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)  #call Sprite initializer
         self.images = image_files
         self.image = self.images[0]
+        self.index = 1
+        self.count = 0
         self.rect = self.image.get_rect()
         self.rect.left, self.rect.top = location
     def update(self):
-        return
+        self.count += 1
+        if self.count > 10:
+            self.index += 1
+            if self.index >= len(self.images):
+                self.index = 0
+            self.image = self.images[self.index]
+            self.count = 0
 
 class Enemy(pygame.sprite.Sprite):
     """Class for the Bayonet enemy that runs toward the player"""
@@ -77,7 +85,7 @@ def main():
     if pygame.mixer and not pygame.mixer.get_init():
         print ('Warning, no sound')
         pygame.mixer = None
-
+    font = pygame.font.Font(main_dir + '\media\\BUILDER.ttf', int(height / 10))
     # Set the display mode
     screen = pygame.display.set_mode(TRUERES,pygame.FULLSCREEN)
 
@@ -90,10 +98,6 @@ def main():
     pygame.display.set_icon(icon)
     pygame.display.set_caption('Shooting Hills')
     pygame.mouse.set_visible(0)
-
-    #create the background, tile the bgd image
-    screen.blit(menu.image, menu.rect)
-    pygame.display.flip()
 
     #load the sound effects
     hurt_sound = load_sound('hurt.mp3')
@@ -118,10 +122,25 @@ def main():
     all = pygame.sprite.RenderUpdates()
     lastalien = pygame.sprite.GroupSingle()
     
+    #assign default groups to each sprite class
+    menu.containers = all
+
     clock = pygame.time.Clock()
     
+    #set fonts
+    startSurface = font.render('START', False, (0, 0, 0))
+    aboutSurface = font.render('ABOUT', False, (0, 0, 0))
+    exitSurface = font.render('EXIT', False, (0, 0, 0))
+
     running = True
     while running:
+        #create the background, tile the bgd image
+        screen.blit(menu.image, menu.rect)
+        screen.blit(startSurface,(width*3/5,height*8/12))
+        screen.blit(aboutSurface,(width*3/5,height*9/12))
+        screen.blit(exitSurface,(width*3/5,height*10/12))
+        pygame.display.flip()
+
         #get input
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
@@ -135,14 +154,15 @@ def main():
         all.clear(screen, menu)
 
         #update all the sprites
-        all.update()
-            
+        menu.update()
+        
         #draw the scene
         dirty = all.draw(screen)
         pygame.display.update(dirty)
 
         #cap the framerate
-        clock.tick(40)
+        clock.tick(30)
+
     pygame.quit()
 #General functions for loading media files
 

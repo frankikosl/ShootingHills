@@ -18,6 +18,7 @@ BOMB_ODDS      = 60    #chances a new bomb will drop
 ALIEN_RELOAD   = 12     #frames between new aliens
 SCREENRECT     = Rect(0, 0, 640, 480)
 SCORE          = 0
+MENUTYPE       = 0  #Current menu, 0 is main, 1 is about, 2 is difficulty
 
 main_dir = os.path.split(os.path.abspath(__file__))[0]
 
