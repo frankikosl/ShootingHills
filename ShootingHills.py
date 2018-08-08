@@ -98,6 +98,8 @@ def main():
     #(do this before the classes are used, after screen setup
     menu = Background(load_images(
         'Unbenannt1.png', 'Unbenannt2.png', 'Unbenannt3.png') ,[0,0])
+    difficulty = Background(load_images(
+        'difficulty1.png', 'difficulty2.png', 'difficulty3.png') ,[0,0])
     #decorate the game window
     icon = load_image('icon.png')
     pygame.display.set_icon(icon)
@@ -129,6 +131,7 @@ def main():
     
     #assign default groups to each sprite class
     menu.containers = all
+    difficulty.containers = all
 
     clock = pygame.time.Clock()
     
@@ -136,6 +139,9 @@ def main():
     startSurface = font.render('START', False, (0, 0, 0))
     aboutSurface = font.render('ABOUT', False, (0, 0, 0))
     exitSurface = font.render('LEAVE', False, (0, 0, 0))
+    easySurface = font.render('EASY', False, (0, 0, 0))
+    mediumSurface = font.render('MEDIUM', False, (0, 0, 0))
+    hardSurface = font.render('HARD', False, (0, 0, 0))
     arrowsSurface = arrow.render('[       ]', False, (0, 0, 0))
 
     running = True
@@ -149,6 +155,31 @@ def main():
             screen.blit(aboutSurface,(width*24/40,height*72/96))
             screen.blit(exitSurface,(width*24/40,height*80/96))
             pygame.display.flip()
+             # clear/erase the last drawn sprites
+            all.clear(screen, menu)
+
+            #update all the sprites
+            menu.update()
+        
+            #draw the scene
+            dirty = all.draw(screen)
+            pygame.display.update(dirty)
+        if CURRENTMENU == 2:
+            screen.blit(difficulty.image, difficulty.rect)
+            screen.blit(arrowsSurface,(width*23/40,height*50/96))
+            screen.blit(easySurface,(width*10/40,height*50/96))
+            screen.blit(mediumSurface,(width*20/40,height*50/96))
+            screen.blit(hardSurface,(width*30/40,height*50/96))
+            pygame.display.flip()
+            # clear/erase the last drawn sprites
+            all.clear(screen, difficulty)
+
+            #update all the sprites
+            difficulty.update()
+        
+            #draw the scene
+            dirty = all.draw(screen)
+            pygame.display.update(dirty)
 
         #get input
         for event in pygame.event.get():
@@ -178,15 +209,7 @@ def main():
             elif event.type == pygame.QUIT:
                 running = False
                 break
-        # clear/erase the last drawn sprites
-        all.clear(screen, menu)
 
-        #update all the sprites
-        menu.update()
-        
-        #draw the scene
-        dirty = all.draw(screen)
-        pygame.display.update(dirty)
 
         #cap the framerate
         clock.tick(30)
