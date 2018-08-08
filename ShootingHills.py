@@ -138,10 +138,11 @@ def main():
     #set fonts
     startSurface = font.render('START', False, (0, 0, 0))
     aboutSurface = font.render('ABOUT', False, (0, 0, 0))
-    exitSurface = font.render('LEAVE', False, (0, 0, 0))
+    backSurface = font.render('BACK', False, (0, 0, 0))
     easySurface = font.render('EASY', False, (0, 0, 0))
     mediumSurface = font.render('MEDIUM', False, (0, 0, 0))
     hardSurface = font.render('HARD', False, (0, 0, 0))
+    quitSurface = font.render('QUIT', False, (0, 0, 0))
     arrowsSurface = arrow.render('[       ]', False, (0, 0, 0))
 
     running = True
@@ -153,7 +154,7 @@ def main():
             screen.blit(arrowsSurface,(width*23/40,(height*65/96 + (height*8/96 * arrowindex))))
             screen.blit(startSurface,(width*24/40,height*64/96))
             screen.blit(aboutSurface,(width*24/40,height*72/96))
-            screen.blit(exitSurface,(width*24/40,height*80/96))
+            screen.blit(quitSurface,(width*24/40,height*80/96))
             pygame.display.flip()
              # clear/erase the last drawn sprites
             all.clear(screen, menu)
@@ -166,10 +167,15 @@ def main():
             pygame.display.update(dirty)
         if CURRENTMENU == 2:
             screen.blit(difficulty.image, difficulty.rect)
-            screen.blit(arrowsSurface,(width*23/40,height*50/96))
-            screen.blit(easySurface,(width*10/40,height*50/96))
-            screen.blit(mediumSurface,(width*20/40,height*50/96))
+            if arrowindex < 3:
+                screen.blit(arrowsSurface,((width*4/40 + width*12*arrowindex/40),height*51/96))
+            else:
+                screen.blit(arrowsSurface,((width*4/40 + width*25*(arrowindex-3)/40),height*80/96))
+            screen.blit(easySurface,(width*5/40,height*50/96))
+            screen.blit(mediumSurface,(width*17/40,height*50/96))
             screen.blit(hardSurface,(width*30/40,height*50/96))
+            screen.blit(quitSurface,(width*5/40,height*80/96))
+            screen.blit(backSurface,(width*30/40,height*80/96))
             pygame.display.flip()
             # clear/erase the last drawn sprites
             all.clear(screen, difficulty)
@@ -203,9 +209,20 @@ def main():
                        elif arrowindex == 2:
                            running = False
                            break
-                if event.key == pygame.K_ESCAPE:
-                    running = False
-                    break
+                   if event.key == pygame.K_ESCAPE:
+                       running = False
+                       break
+                if CURRENTMENU == 2:
+                   if event.key == pygame.K_LEFT or (
+                    event.key == pygame.K_RIGHT):
+                        if event.key == pygame.K_RIGHT and arrowindex != 4:
+                            arrowindex += 1
+                        if event.key == pygame.K_LEFT and arrowindex != 0:
+                            arrowindex -= 1
+                   if event.key == pygame.K_ESCAPE:
+                       CURRENTMENU = 0
+                       arrowindex = 0
+                       break
             elif event.type == pygame.QUIT:
                 running = False
                 break
