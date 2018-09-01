@@ -4,7 +4,7 @@ from pygame.locals import *
 import random
 import os.path
 import ctypes
-
+#test
 pygame.init()
 ctypes.windll.user32.SetProcessDPIAware()
 
@@ -143,7 +143,6 @@ def main():
     mediumSurface = font.render('MEDIUM', False, (0, 0, 0))
     hardSurface = font.render('HARD', False, (0, 0, 0))
     quitSurface = font.render('QUIT', False, (0, 0, 0))
-    arrowsSurface = arrow.render('[       ]', False, (0, 0, 0))
 
     running = True
     arrowindex = 0
@@ -254,7 +253,8 @@ def load_images(*files):
 
 class dummysound:
     def play(self): pass
-
+def get_arrows(menu, index):
+    arrowsSurface = arrow.render('[       ]', False, (0, 0, 0))
 def load_sound(file):
     if not pygame.mixer: return dummysound()
     file = os.path.join(main_dir+'\media\\'+file)
